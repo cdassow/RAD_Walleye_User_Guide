@@ -132,20 +132,32 @@ Altogether, the goal of this tab is to provide the user with a picture of how th
 ##### Data Note
 Currently, the 2020 fishing regulations are shown in the app. This was the most complete set of regulation data on hand when app development began. These will be updated prior to the bureau-wide release of the app.
 
-### Stocking Records
+### Stocking Records and Model Predictions
 
-The 'Walleye Stocking' tab will only be of use if the user-selected lake has been stock or if the user is considering stocking and wants to see what the stocking histories are for similar lakes.
-If no stocking history exists for the selected lake a message will appear notifying the user of this. 
+The 'Walleye Stocking' tab will only be of use if the user-selected lake has been stock or if the user is considering stocking and wants to see what the stocking histories are for similar lakes, or what model predictions for stocking survival are for a given lake.
+
+This tab is comprised of two main types of information; 1) stocking receipt data to understand the stocking history of a system, and 2) model predictions of stocking success to understand how likely potential stocking efforts are to pay off for different stocking sizes and densities.
+First, the stocking receipt data.
+If no stocking history exists for the selected lake a message will appear notifying the user of this.
 Regardless of of whether or not the selected lake has been stocked, the app will at minimum display the stocking histories for lakes within the selected lake's current and mid-century lake classification. 
 Stocking histories include both the distribution of stocking densities for the major age classes (the user can again click the check boxes at the top of the panel to turn on/off certain age classes of stocked walleye), and the stocking density through time for the current and future lake classifications as well as the selected lake if the lake-specific data exists. 
 
-Finally, using an average cost per fish for each of the stocked age classes, average annual stocking expenditure for a lake is calculated for the current and future lake classes. If the user-selected lake as a stocking history then an approximation of the annual stocking cost for that lake is also displayed.
+Next, the stocking model data. A model of stocking success for Wisconsin lakes was originally published by [Lawson et al. (2022)](https://doi.org/10.1002/nafm.10721) for a subset of walleye lakes in Wisconsin's Ceded Territory.
+The results of this work have been incorporated into the app to provide estimates of stocking survival for the year 2020 and 2050 for any lake statewide with the necessary predictor data (secchi depth, growing degree days at 5C, and lake area) for a range of stocked fish sizes and densities.
+Growing degree day data necessary to use the Lawson et al. (2022) model were obtained from [Winslow et al. (2017)](https://doi.org/10.1038/sdata.2017.53).
+Secchi information was obtained from [Rypel et al. (2019)](https://doi.org/10.1002/fsh.10228), and lake sizes were obtained from the Wisconsin DNR. 
+Model predictions here are meant to outline the boundaries of potential combinations of stocking length and density that could be used. 
+By presenting model predictions for the extreme lengths and densities the user will be able to understand the maximum and minimum survivals that might be expected for the chosen lake, and thus what the expected survival might be for any combination of stocking length and density they might choose.
+This information is presented in two tables, one for 2020 and one for 2050, and a box-and-whisker plot to better illustrate the spread of predictions for lakes of a given lake class.
+
+Finally, using an average cost per fish for each of the stocked age classes, average annual stocking expenditure for a lake is calculated for the current and future lake classes. If the user-selected lake has a stocking history then an approximation of the annual stocking cost for that lake is also displayed.
 
 In summary, the data presented on this tab are designed to provide the user with some context as to the stocking history for the selected lake and how that compares to similar systems.
 This may be of use in deciding whether to start/stop stocking or change stocking rates as the future of walleye in a particular lake are considered, specifically in light of the 'Resist-Accept-Direct' framework alluded to in the 'Overview' section.
 
 ##### Data Note
-The stocking data in the app will be periodically updated. As of initial deployment to the R shiny server the stocking data covers only walleye stocking events from 1971 to 2021.
+The stocking receipt data in the app will be periodically updated. As of initial deployment to the R shiny server the stocking data covers only walleye stocking events from 1971 to 2021.
+
 
 ### Creel Surveys
 
