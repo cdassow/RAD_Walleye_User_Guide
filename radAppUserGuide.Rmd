@@ -17,12 +17,13 @@ library(tidyverse)
 The 'RAD Walleye Tool' was conceived as a method for connecting research on the future of walleye natural recruitment back to fisheries managers in Wisconsin.
 The tool was developed by Colin Dassow, Ralph Tingley III, Alex Latzka, Abigail Lynch, Greg Sass, and Craig Paukert as a joint project between the University of Missouri, U.S. Geological Survey, and Wisconsin DNR.
 
+
 A companion paper describing the tool and some of the broadscale patterns in the tool has been published in [*Fisheries Management and Ecology*](https://doi.org/10.1111/fme.12548).
 This guide it designed to assist users in navigating the tool and understanding the data it shows. 
 
 
 The tool itself is designed with the Resist-Accept-Direct (RAD) framework in mind.
-The goal being that users of the tool can use the information provided by the tool to inform their decisions (or their advice to those with decision-making authority) about whether to Resist, Accept, or Direct in walleye fisheries in Wisconsin.
+The goal being that users of the tool can use the information provided by the tool to inform their decisions (or their advice to those with decision-making authority) about whether to Resist, Accept, or Direct for an individual walleye population in Wisconsin.
 Because of the nature of the tool, the primary user groups are Wisconsin DNR Fisheries Biologists and other staff, and Great Lakes Indian Fish and Wildlife Commission Biologists, staff, and member tribe conservation departments.
 More detail on RAD strategies for Wisconsin fisheries can be found in [Dassow et al. (2022)](https://doi.org/10.1111/fme.12548) and [Feiner et al. (2022)](https://doi.org/10.1111/fme.12549). 
 For the application of the RAD framework to a specific case study and to see how the RAD framework can be integrated with the Ojibwe worldview see [Shultz et al. (2022)](https://onlinelibrary.wiley.com/doi/pdf/10.1111/fme.12568).
@@ -36,7 +37,7 @@ This can aid in making RAD decisions by providing context as to how a given lake
 
 The majority of the walleye lakes in Wisconsin fall within the 1837 and 1842 Treaty Ceded Territories and consequently the majority of walleye lakes which are likely to be analyzed in this application are within the Ceded Territory of Wisconsin (CTWI). 
 Management of walleye (known as Ogaa in Ojibwe) populations in this region is done jointly by Wisconsin Department of Natural Resources (WDNR) and Great Lakes Indian Fish and Wildlife Commission (GLIFWC) and the individual tribes they serve. 
-Users of the app working in this region are reminded of the co-management structure here and will need to seek additional input from both of the co-managers of the resource. This is especially true for management decision concerning walleye and muskellunge. 
+Users of the app working in this region are reminded of the co-management structure here and will need to seek additional input from co-managers of the resource. This is especially true for management decision concerning walleye and muskellunge. 
 Specific information on spring tribal harvest of ogaa and maazhi-ginoozhe (muskellunge) in the CTWI is provided on the 'Creel' tab of  the app and described in the corresponding section below.
 
 ```{r,cache=TRUE,fig.cap="Map of Ceded Territory (grey area) in Wisconsin",fig.width=5,fig.height=4,echo=F,results='hide',fig.keep='all'}
@@ -63,24 +64,26 @@ Doug Beard also provided feedback on the tool development.
 
 The app can be launched by clicking [here](https://rconnect.usgs.gov/RAD_Wisconsin_Walleye_Tool/).
 
-Upon opening the app the user should see the general layout of the app without any information filled in because a lake has not yet been selected.
+Upon opening the app the user should see the general layout of the app.
 The app is set up to have a side bar on the left for entering the desired lake and species information, and a main page filling the rest of the space. 
 The main page is split into 2 parts, 1) the top portion of the page displays basic lake information, and 2) the bottom portion provides tabs containing the different data types that can be used to aid in decision-making.
 
 1. Begin typing the county name containing the lake you're interested in and the search bar will show choices closest to what you're typing
+  + Alternatively, if you know the WBIC of the waterbody you may select the 'Search by WBIC' tab in the upper left and enter it there
 2. Begin typing the lake name you're interested in and the search bar will suggest lake names in the county you've chosen that match what you're typing
-3. Click submit to tell the app to pull all the necessary information for that waterbody
+3. The app will automatically update it self to the informatin for the lake you choose
   + If desired, enter in the names of species, in addition to walleye, that you wish to see information for. 
     - not all information types in the app will have data to display for every lake due to limitations of sampling effort
 
-Completion of the 3 steps above will populate the app with the relevant data for the user to begin exploring.
+Completion of the 3 steps above will populate the app with the relevant data for the user to begin exploring. 
+Because of the volume of lake and the on-the-fly filtering that app it doing, it may occassionally be sluggish to update the lake choices when you update the county of interest or the lake choice box might take a second to appear after the app is initially opened, give it a second and it'll get there.
 
 ## Error/Warning Messages 
 
 Despite the best efforts of the development team, there are bound to be a few bugs that need to be ironed out over time. 
 Because of this, the user is bound to encounter the occasional error message where they are expecting to see a plot or data table.
 This is an indication that the code used to produce that graphic is for some reason not working. 
-It may be the case that the necessary data to produce the graphic does not exist for the selected lake and an message alerting the user to this needs to be added in lieu of the raw error message produced by the app.
+It may be the case that the necessary data to produce the graphic does not exist for the selected lake and a message alerting the user to this needs to be added in lieu of the raw error message produced by the app.
 
 For this and any other error messages you encounter, feel free to contact Colin Dassow for assistance.
 Email is probably best for this kind of assistance if you're able to provide a few key details the error can likely be explained fairly quickly... solving it may be another can of worms.
@@ -103,7 +106,7 @@ This classification is what is used to group lakes together and make comparisons
 Further details on how lake classes are determined can be found in [Rypel et al. (2019)](https://doi.org/10.1002/fsh.10228).
 Also displayed here are the model predictions developed by this group to describe the probability of successful natural recruitment, adult survival, and adult survival in connected streams for the given lake. 
 This information provides some quick description of how suitable the habitat in the lake is for walleye. 
-Further information on the models and model output can be obtained by contacting [Colin Dassow](colin.dassow@wisconsin.gov) and a paper detailing the model is currently under development.
+Further information on the models and model output can be obtained by contacting [Colin Dassow](colin.dassow@wisconsin.gov) and a paper detailing the model is currently in prep for publication.
 
 ## Data Tabs
 
@@ -114,6 +117,12 @@ The following subsections below will cover each tab in depth.
 Not every tab will be of major importance to the user depending on the lake in question as certain metrics are more telling for some systems than others. 
 Additionally, some lakes will not have data to display for some tabs. Typically a message will display alerting the user to the fact that no data exists for that lake or lake class and the data tab in question. 
 
+## Data Updates
+
+Annually the data in the app will be updated to include recent surveys. 
+Currently, all the data used in the app are up to date as of January 2024. 
+The exception to this is the fishing regulation data, this is only up to date through 2020, as the regulations table in WDNR's Fisheries Management Information System is updated the app will follow.
+
 ### Regulations
 
 Here the current fishing regulations for all the major gamefish (Walleye/Sauger, Largemouth Bass, Smallmouth Bass, Muskellunge, Northern Pike, and Panfish) are displayed for the user-selected lake.
@@ -123,23 +132,23 @@ Below the table describing the current regulatory regime for the selected lake, 
 This information is provided for all the major gamefish.
 For each of the gamefishes, a histogram describing the frequency of different regulatory sources (waterbody specific, county, zone, state) is shown.
 This allows the user to see how other similar lakes tend to be regulated, and the user can click on the bars in the plot to prompt the app to open a table with information about the lakes contained within that bar.
-This can be used to proved a quick reminder of what the regulation is for a particular source as the regulation description is also listed for each lake. 
+This can be used to provide a quick reminder of what the regulation is for a particular source as the regulation description is also listed for each lake. 
 There is a panel of check boxes above these histograms where the user can choose what regulatory information to display if there are certain parts of the regulations, like start date, that are particularly important to the user.
 By default, the WBIC, lake name, county, regulation source, written regulation description, and comments are shown.
 
 Altogether, the goal of this tab is to provide the user with a picture of how the selected lake is managed now, how similar lakes are managed (i.e. are there other regulatory structures that should be considered for the selected lake?), and how other lakes the selected lake will be similar to at  mid-century are managed.
 
 ##### Data Note
-Currently, the 2020 fishing regulations are shown in the app. This was the most complete set of regulation data on hand when app development began. These will be updated prior to the bureau-wide release of the app.
+Currently, the 2020 fishing regulations are shown in the app. This was the most complete set of regulation data on hand when app development began.
 
 ### Stocking Records and Model Predictions
 
-The 'Walleye Stocking' tab will only be of use if the user-selected lake has been stock or if the user is considering stocking and wants to see what the stocking histories are for similar lakes, or what model predictions for stocking survival are for a given lake.
+The 'Walleye Stocking' tab will only be of use if the user-selected lake has been stocked or if the user is considering stocking and wants to see what the stocking histories are for similar lakes, or what model predictions for stocking survival are for a given lake.
 
 This tab is comprised of two main types of information; 1) stocking receipt data to understand the stocking history of a system, and 2) model predictions of stocking success to understand how likely potential stocking efforts are to pay off for different stocking sizes and densities.
 First, the stocking receipt data.
 If no stocking history exists for the selected lake a message will appear notifying the user of this.
-Regardless of of whether or not the selected lake has been stocked, the app will at minimum display the stocking histories for lakes within the selected lake's current and mid-century lake classification. 
+Regardless of whether or not the selected lake has been stocked, the app will at minimum display the stocking histories for lakes within the selected lake's current and mid-century lake classification. 
 Stocking histories include both the distribution of stocking densities for the major age classes (the user can again click the check boxes at the top of the panel to turn on/off certain age classes of stocked walleye), and the stocking density through time for the current and future lake classifications as well as the selected lake if the lake-specific data exists. 
 
 Next, the stocking model data. A model of stocking success for Wisconsin lakes was originally published by [Lawson et al. (2022)](https://doi.org/10.1002/nafm.10721) for a subset of walleye lakes in Wisconsin's Ceded Territory.
@@ -148,7 +157,7 @@ Growing degree day data necessary to use the Lawson et al. (2022) model were obt
 Secchi information was obtained from [Rypel et al. (2019)](https://doi.org/10.1002/fsh.10228), and lake sizes were obtained from the Wisconsin DNR. 
 Model predictions here are meant to outline the boundaries of potential combinations of stocking length and density that could be used. 
 By presenting model predictions for the extreme lengths and densities the user will be able to understand the maximum and minimum survivals that might be expected for the chosen lake, and thus what the expected survival might be for any combination of stocking length and density they might choose.
-This information is presented in two tables, one for 2020 and one for 2050, and a box-and-whisker plot to better illustrate the spread of predictions for lakes of a given lake class.
+This information is presented for the use selected lake with columns for 2020 and 2050. A second table is provided for lake class averages for the current and future lake classes
 
 Finally, using an average cost per fish for each of the stocked age classes, average annual stocking expenditure for a lake is calculated for the current and future lake classes. If the user-selected lake has a stocking history then an approximation of the annual stocking cost for that lake is also displayed.
 
@@ -156,7 +165,7 @@ In summary, the data presented on this tab are designed to provide the user with
 This may be of use in deciding whether to start/stop stocking or change stocking rates as the future of walleye in a particular lake are considered, specifically in light of the 'Resist-Accept-Direct' framework alluded to in the 'Overview' section.
 
 ##### Data Note
-The stocking receipt data in the app will be periodically updated. As of initial deployment to the R shiny server the stocking data covers only walleye stocking events from 1971 to 2021.
+The stocking receipt data in the app will be updated on the typical annual schedule. If you're using the app and notice missing data that should be there, feel free to reach out to Colin to solve the issue.
 
 
 ### Creel Surveys
@@ -167,7 +176,8 @@ The recreational angler creel tab provides the user with a brief overview of ang
 This information is provided for not just walleye, but any of the gamefish species entered by the user in the top-left portion of the app where the county and lake of interest are provided. 
 There are check boxes on this page as well to allow the user to customize which species' creel data are displayed. 
 
-The data table at the top of this sub-tab shows the distribution of catch-per-unit-efforts (CPUEs) for the selected lake and it's current and future lake classes.
+The data table at the top of this sub-tab shows the number and age of creel surveys for the lake. 
+Second, a table for the distribution of catch-per-unit-efforts (CPUEs) for the selected lake and it's current and future lake classes.
 The minimum, lower 25% quartile, mean, upper 75% quartile, and maximum angler CPUE are shown for each species in the selected lake and its current and future lake classes.
 Again, as with the other data tabs, a specific lake may not have creel information available at all or for a specific species selected by the user.
 In these instances the lake-class averages are still displayed to give the user some idea of what might be expected in the focal lake.
@@ -189,7 +199,7 @@ For each data type, the values shown are the raw values for the selected lake, a
 The top portion of this tab uses box-and-whisker plots to generally show whether the selected lake is above, below, or average compared to all the other lakes in its current and future lake class.
 Next, the same information is shown in more detail by placing the values for safe harvest limit, harvest declaration, and proportion of safe harvest declared in chronological order to show how these metrics have been changing across time while still maintaining the comparison between the selected lake and average values for its current and future lake classes.
 This is followed by the raw data for the selected lake that is used to create the plots above should the user be interested in specific values for specific years. This data comes directly from GLIFWC and is shared with WDNR annually. 
-Finally, the last figure on this tab is designed to show how specific tribes use the fishery on the selected lake. The plot here shows what proportion of the total harvest declaration is attributed to each tribe for the lake. Often only one tribe will harvest a specific lake, but there are some lakes that are used by multiple tribes. The purpose of this plot is to get the user thinking about how changes to the ogaa and maazhi-ginoozhe fisheries for the lake, whether are they changes in co-management or environmental change, will effect some tribes more than others.
+Finally, the last figure on this tab is designed to show how specific tribes use the fishery on the selected lake. The plot here shows what proportion of the total harvest declaration is attributed to each tribe for the lake. Often only one tribe will harvest a specific lake, but there are some lakes that are used by multiple tribes. The purpose of this plot is to get the user thinking about how changes to the ogaa and maazhi-ginoozhe fisheries for the lake, whether they are changes in co-management or environmental change, will effect some tribes more than others.
 
 
 ##### Data Note
@@ -203,15 +213,16 @@ Catch-per-mile distributions are shown for YOY, or age-0, as well as age-1 walle
 By comparing the distribution of catch rates for the user-selected lake and the current and future lake class of that lake, the user can see if the chosen lake typically has a higher, lower, or about equal catch rate compared to lakes with similar characteristics.
 
 The same data are also shown through time to give the user an idea of whether or not catch rates have been trending upwards or downwards through time compared to other lakes with similar characteristics. 
-Additionally, some summary length information is also provided for the minimum, mean, and maximum length of age-0 and age-1 walleye captured during all surveys for the user selected lake and the lake-class averages for the current and future lake classes.
+Additionally, some summary length information is also provided for the minimum, mean, and maximum length of age-0 and age-1 walleye captured during fall surveys for the user selected lake and the lake-class averages for the current and future lake classes.
 
 Aside from walleye CPE data, the user may be interested in catch rates for certain other commonly sampled species. 
-Using the species specified by the user in panel where the lake was selected, the app pulls all the relevant CPE data from standardized electrofishing survey. 
+Using the species specified by the user in panel where the lake was selected, the app pulls all the relevant CPE data from standardized electrofishing surveys and fyke net surveys.
+These data are separated by gear type.
 Similar to the YOY walleye data, the distribution of CPE values for the user-selected lake and its current and future lake class are shown for each species selected by the user. 
 Different CPE metrics are also available for the user to chose from. 
 Aside from the default 'CPEmile' which is the total catch per mile, the user may elect to see CPE for different sizes of fish. 
 For example, 'CPE8' may be chosen which will trigger the app to update the CPE plots to include a separate column comparing the catch rate of fish 8 inches or larger in the user-selected lake and its current and future lake class. 
-For some species there may not be data available for a given CPE-size pairing in which case the plot will will include the selected CPE measure along the x-axis but not data will be displayed above it.
+For some species there may not be data available for a given CPE-size pairing in which case the plot will will include the selected CPE measure along the x-axis but no data will be displayed above it.
 
 The second sub-tab, 'Walleye Population Estimates' contains any walleye population estimates available for the selected lake. 
 First the plot through time of the raw number of fish estimated to be in the stock with the 95% confidence interval is shown for just the user-selected lake. 
@@ -219,9 +230,7 @@ Alongside that is the population size expressed in terms of density (number per 
 Below that is a table displaying the details of any population estimate available for the user-selected lake.
 
 ##### Data Note
-Currently only electrofishing survey data are used for the CPE estimates. 
-For YOY walleye this is not an issue as this is the standard gear for sampling these fish. 
-For other species there may be a desire to see CPE values for different gear types. Future updates to the app can accomplish this if desired.
+Nothing outside of the standard annual updates of this survey data.
 
 ### Length-at-age
 
@@ -243,7 +252,7 @@ Feel free to contact [Colin Dassow](colin.dassow@wisconsin.gov) with any questio
 ### Alternative Walleye Lakes & Travel Costs
 
 This tab is split into two sub-tabs, 'Substitutable Walleye Options' and 'Travel Costs'. The first tab is designed to present the user with alternative walleye lakes within a few different driving radii. 
-The idea here is that depending on whether or not the user-selected lake is maintained as a walleye fishing option, anglers may choose to divert their angling effort to one of several substitutable options. 
+The idea here is that depending on whether or not the user-selected lake is maintained as a walleye fishing option, anglers may choose to divert their angling effort to one of several substitute options. 
 An understanding of the number and characteristics of the nearby walleye lakes can help the user understand whether the loss of the selected lake would result in a major lost fishing opportunity or if there are enough quality alternatives around that anglers in the area would still be able to seek out walleye fishing options.
 This information is presented for both the years 2020 and 2050.
 The individual bars on each of the plots can be clicked to produce a table describing the lakes that make up that bar. 
@@ -273,7 +282,7 @@ All of this again is to describe what the increased cost might look like for ang
 An 'alternative' walleye fishing option here is defined as a system with a natural recruitment probability $\geq 0.5$, meaning only lakes with NR probabilities $\geq 0.5$ were counted when producing the plots and tables in this sub-tab.
 'Quality' walleye fisheries are those with at least 3 adults/acre of water.
 
-### Invasive Species
+### Non-native Species
 
 This tab is fairly straightforward compared to previous tabs.
 First, the user can use the AIS smart prevention tool to see what common non-native species might be able to establish themselves in Wisconsin lakes and streams to see what potential risks exist for the lake they're interested in. 
@@ -283,7 +292,7 @@ Finally, a summary table comparing the total number of non-native species in the
 
 ##### Data Note
 The data used in this tab are publicly available and taken directly from WDNR.
-They describe the confirmed presence of various non-native aquatic plant and animal species as of 2021. 
+They describe the confirmed presence of various non-native aquatic plant and animal species. 
 As non-native species spread this data will need to be updated as WDNR confirms the presence of a given species.
 
 ### Report Download
