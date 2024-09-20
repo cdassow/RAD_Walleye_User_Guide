@@ -1,12 +1,12 @@
 ---
 title: "RAD Walleye Tool User Guide"
 author: "Colin Dassow"
-output: pdf_document
-toc: True
+output: 
+ bookdown::pdf_document2: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = F, fig.align = 'center',cache = T)
 library(sp)
 library(sf)
 library(tidyverse)
@@ -40,7 +40,7 @@ Management of walleye (known as Ogaa in Ojibwe) populations in this region is do
 Users of the app working in this region are reminded of the co-management structure here and will need to seek additional input from co-managers of the resource. This is especially true for management decision concerning walleye and muskellunge. 
 Specific information on spring tribal harvest of ogaa and maazhi-ginoozhe (muskellunge) in the CTWI is provided on the 'Creel' tab of  the app and described in the corresponding section below.
 
-```{r,cache=TRUE,fig.cap="Map of Ceded Territory (grey area) in Wisconsin",fig.width=5,fig.height=4,echo=F,results='hide',fig.keep='all'}
+```{r,fig.cap="Map of Ceded Territory (grey area) in Wisconsin",fig.width=5,fig.height=4,echo=F,results='hide',fig.keep='all'}
 
 stBound=st_read("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/state_bnd_ar.shp") 
 ctBounds=st_read("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/TRIBAL_LANDS/ceded_territory_ar.shp")
@@ -68,15 +68,19 @@ Upon opening the app the user should see the general layout of the app.
 The app is set up to have a side bar on the left for entering the desired lake and species information, and a main page filling the rest of the space. 
 The main page is split into 2 parts, 1) the top portion of the page displays basic lake information, and 2) the bottom portion provides tabs containing the different data types that can be used to aid in decision-making.
 
-1. Begin typing the county name containing the lake you're interested in and the search bar will show choices closest to what you're typing
+1. Begin typing the county name containing the lake you're interested in and the search bar will show choices closest to what you're typing (Figure \@ref(fig:lakeSelect))
   + Alternatively, if you know the WBIC of the waterbody you may select the 'Search by WBIC' tab in the upper left and enter it there
 2. Begin typing the lake name you're interested in and the search bar will suggest lake names in the county you've chosen that match what you're typing
-3. The app will automatically update it self to the informatin for the lake you choose
+3. The app will automatically update it self to the information for the lake you choose
   + If desired, enter in the names of species, in addition to walleye, that you wish to see information for. 
     - not all information types in the app will have data to display for every lake due to limitations of sampling effort
 
+```{r lakeSelect, fig.cap="The red box on the left indicates where the user can enter the information to select a lake to view.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/lakeEntry.png")
+```
+
 Completion of the 3 steps above will populate the app with the relevant data for the user to begin exploring. 
-Because of the volume of lake and the on-the-fly filtering that app it doing, it may occassionally be sluggish to update the lake choices when you update the county of interest or the lake choice box might take a second to appear after the app is initially opened, give it a second and it'll get there.
+Because of the volume of lake and the on-the-fly filtering that app it doing, it may occasionally be sluggish to update the lake choices when you update the county of interest or the lake choice box might take a second to appear after the app is initially opened, give it a second and it'll get there.
 
 ## Error/Warning Messages 
 
@@ -93,13 +97,13 @@ Email: [colin.dassow@wisconsin.gov](colin.dassow@wisconsin.gov)
 Provide (if possible):
 
 * Lake-county combination  you were using
-* Description or screen shot of where in the app the error ocurred.
+* Description or screen shot of where in the app the error occurred.
 * Is this something unique to this lake (in which case it may be that the data doesn't exist for that lake), or does the error occur regardless of the chosen lake?
 
 
 ## Basic Lake Information
 
-Several boxes are populated describing lake size and depth. 
+Several boxes are populated describing lake size and depth (Figure \@ref(fig:staticPanel)). 
 Importantly, here the current (2020) and future (2050) lake classification is given for the selected lake.
 The lake classification system groups lakes together based on similar abiotic and biotic characteristics.
 This classification is what is used to group lakes together and make comparisons between the selected lake, lakes it currently resembles, and lakes it will likely resemble in the future.
@@ -108,16 +112,24 @@ Also displayed here are the model predictions developed by this group to describ
 This information provides some quick description of how suitable the habitat in the lake is for walleye. 
 Further information on the models and model output can be obtained by contacting [Colin Dassow](colin.dassow@wisconsin.gov) and a paper detailing the model is currently in prep for publication.
 
+```{r staticPanel, fig.cap="Basic Lake information that is always visible at the top of the page", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/staticPanel.png")
+```
+
 ## Data Tabs
 
-Below the 'Basic Lake Information' section is a series of tabs containing specific types of data for the selected lake, others it currently resembles, and others it is likely to resemble at mid-century. 
+Below the 'Basic Lake Information' section is a series of tabs containing specific types of data for the selected lake, others it currently resembles, and others it is likely to resemble at mid-century(Figure \@ref(fig:lakeTabs)). 
 This 'Additional Lake Information' section is where the bulk of the content of the app is situated.
 The following subsections below will cover each tab in depth.
+
+```{r lakeTabs, fig.cap="Tabs housing specific kinds of information comparing the selected lake to its lake class averages now and in 2050.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/lakeTabs.png")
+```
 
 Not every tab will be of major importance to the user depending on the lake in question as certain metrics are more telling for some systems than others. 
 Additionally, some lakes will not have data to display for some tabs. Typically a message will display alerting the user to the fact that no data exists for that lake or lake class and the data tab in question. 
 
-## Data Updates
+#### Data Updates
 
 Annually the data in the app will be updated to include recent surveys. 
 Currently, all the data used in the app are up to date as of January 2024. 
@@ -125,16 +137,24 @@ The exception to this is the fishing regulation data, this is only up to date th
 
 ### Regulations
 
-Here the current fishing regulations for all the major gamefish (Walleye/Sauger, Largemouth Bass, Smallmouth Bass, Muskellunge, Northern Pike, and Panfish) are displayed for the user-selected lake.
+Here the current fishing regulations for all the major gamefish (Walleye/Sauger, Largemouth Bass, Smallmouth Bass, Muskellunge, Northern Pike, and Panfish) are displayed for the user-selected lake (Figure \@ref(fig:regs1)).
 In addition to the written description of the current regulation, the functional start date (when the regulation in its current form was first implemented) and any additional restrictions are listed to proved the user with an idea of how long the current regulations has been in place.
 
-Below the table describing the current regulatory regime for the selected lake, there are a series of plots that describe the regulatory characteristics of other lakes within the same lake class as the selected lake now and at mid-century.
+```{r regs1, fig.cap="Regulations for the user selected waterbody (note these are only as up to date as is available online in WDNR databases, may not reflect current regulations if there has been a recent change.)", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/regs1.png")
+```
+
+Below the table describing the current regulatory regime for the selected lake, there are a series of plots that describe the regulatory characteristics of other lakes within the same lake class as the selected lake now and at mid-century.(Figure \@ref(fig:regs2)).
 This information is provided for all the major gamefish.
 For each of the gamefishes, a histogram describing the frequency of different regulatory sources (waterbody specific, county, zone, state) is shown.
 This allows the user to see how other similar lakes tend to be regulated, and the user can click on the bars in the plot to prompt the app to open a table with information about the lakes contained within that bar.
 This can be used to provide a quick reminder of what the regulation is for a particular source as the regulation description is also listed for each lake. 
 There is a panel of check boxes above these histograms where the user can choose what regulatory information to display if there are certain parts of the regulations, like start date, that are particularly important to the user.
 By default, the WBIC, lake name, county, regulation source, written regulation description, and comments are shown.
+
+```{r regs2, fig.cap="Summary plots and table of the regulation information for 2020 and 2050 comparison system. Click on the bars on the plots to generate the tables to the right of each plot.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/regs2.png")
+```
 
 Altogether, the goal of this tab is to provide the user with a picture of how the selected lake is managed now, how similar lakes are managed (i.e. are there other regulatory structures that should be considered for the selected lake?), and how other lakes the selected lake will be similar to at  mid-century are managed.
 
@@ -149,7 +169,15 @@ This tab is comprised of two main types of information; 1) stocking receipt data
 First, the stocking receipt data.
 If no stocking history exists for the selected lake a message will appear notifying the user of this.
 Regardless of whether or not the selected lake has been stocked, the app will at minimum display the stocking histories for lakes within the selected lake's current and mid-century lake classification. 
-Stocking histories include both the distribution of stocking densities for the major age classes (the user can again click the check boxes at the top of the panel to turn on/off certain age classes of stocked walleye), and the stocking density through time for the current and future lake classifications as well as the selected lake if the lake-specific data exists. 
+Stocking histories include both the distribution of stocking densities for the major age classes (the user can again click the check boxes at the top of the panel to turn on/off certain age classes of stocked walleye), and the stocking density through time for the current and future lake classifications as well as the selected lake if the lake-specific data exists (Figure \@ref(fig:stocking1), \@ref(fig:stocking2)). 
+
+```{r stocking1, fig.cap="Distribution of stocking densities for the selected waterbody and its comparables (number fish/per acre).", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/stocking1.png")
+```
+
+```{r stocking2, fig.cap="Stocking events through time for the user selected lake and its comparables", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/stocking2.png")
+```
 
 Next, the stocking model data. A model of stocking success for Wisconsin lakes was originally published by [Lawson et al. (2022)](https://doi.org/10.1002/nafm.10721) for a subset of walleye lakes in Wisconsin's Ceded Territory.
 The results of this work have been incorporated into the app to provide estimates of stocking survival for the year 2020 and 2050 for any lake statewide with the necessary predictor data (secchi depth, growing degree days at 5C, and lake area) for a range of stocked fish sizes and densities.
@@ -157,7 +185,11 @@ Growing degree day data necessary to use the Lawson et al. (2022) model were obt
 Secchi information was obtained from [Rypel et al. (2019)](https://doi.org/10.1002/fsh.10228), and lake sizes were obtained from the Wisconsin DNR. 
 Model predictions here are meant to outline the boundaries of potential combinations of stocking length and density that could be used. 
 By presenting model predictions for the extreme lengths and densities the user will be able to understand the maximum and minimum survivals that might be expected for the chosen lake, and thus what the expected survival might be for any combination of stocking length and density they might choose.
-This information is presented for the use selected lake with columns for 2020 and 2050. A second table is provided for lake class averages for the current and future lake classes
+This information is presented for the use selected lake with columns for 2020 and 2050. A second table is provided for lake class averages for the current and future lake classes (Figure \@ref(fig:stocking3)).
+
+```{r stocking3, fig.cap="Stocking survival predictions from the model presented in Lawson et al. (2022). Predicitons are presented for the 2020 and 2050 time period.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/stocking3.png")
+```
 
 Finally, using an average cost per fish for each of the stocked age classes, average annual stocking expenditure for a lake is calculated for the current and future lake classes. If the user-selected lake has a stocking history then an approximation of the annual stocking cost for that lake is also displayed.
 
@@ -176,31 +208,46 @@ The recreational angler creel tab provides the user with a brief overview of ang
 This information is provided for not just walleye, but any of the gamefish species entered by the user in the top-left portion of the app where the county and lake of interest are provided. 
 There are check boxes on this page as well to allow the user to customize which species' creel data are displayed. 
 
-The data table at the top of this sub-tab shows the number and age of creel surveys for the lake. 
+The data table at the top of this sub-tab shows the number and age of creel surveys for the lake (Figure \@ref(fig:creel1)). 
 Second, a table for the distribution of catch-per-unit-efforts (CPUEs) for the selected lake and it's current and future lake classes.
-The minimum, lower 25% quartile, mean, upper 75% quartile, and maximum angler CPUE are shown for each species in the selected lake and its current and future lake classes.
+The minimum, lower 25% quartile, mean, upper 85% quartile, and maximum angler CPUE are shown for each species in the selected lake and its current and future lake classes.
 Again, as with the other data tabs, a specific lake may not have creel information available at all or for a specific species selected by the user.
 In these instances the lake-class averages are still displayed to give the user some idea of what might be expected in the focal lake.
+
+```{r creel1, fig.cap="Basic information about the age and abundance of creel surveys on the user selected waterbody", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/creel1.png")
+```
 
 The frequency of different lengths of fish recorded by the creel clerk are displayed for the selected lake and its current and future lake classes. 
 Here the relative frequency is used instead of the raw frequency to more easily compare between the selected lake and its current and future lake classes.
 A reminder to the user here that the lengths displayed here are for fish physically measured by the creel clerk.
-For the most part this means the fish has been harvested, but this is not without exception. 
+For the most part this means the fish has been harvested, but this is not without exception (Figure \@ref(fig:creel2)). 
 Furthermore, if the frequency of lengths appears to show many fish measured at a length that is currently excluded from harvest, it may be that the lake was creeled at a time when that size was available for harvest under different regulations. 
 
-The last graphic on this tab displays the number of fish harvested per trip plotted against the number of anglers on that trip. 
+The last graphic on this tab displays the number of fish harvested per trip plotted against the number of anglers on that trip (Figure \@ref(fig:creel2)). 
 Because creel data samples anglers at the group level, if a group of anglers brought back a number of harvested fish the creel clerk does not distinguish who harvested what as long as the group total is within regulatory limits.
 Again, a reminder that some creel surveys occurred under different regulatory conditions that what may currently persist for the lake. 
+
+```{r creel2, fig.cap="Creel catch lengths and angler party size and harvest information.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/creel2.png")
+```
 
 The tribal harvest tab is generally split into information pertaining to the ogaa (walleye) portion of the fishery and the maazhi-ginoozhe (muskellunge) portion.
 The relevant data types here are the safe harvest limit of ogaa and maazhi-ginoozhe, the tribal harvest declaration, and the proportion of the safe harvest limit that the harvest declaration accounts for. 
 For each data type, the values shown are the raw values for the selected lake, and the mean values, plus one standard deviation, across lakes in the current and future lake class of the selected lake.
 
-The top portion of this tab uses box-and-whisker plots to generally show whether the selected lake is above, below, or average compared to all the other lakes in its current and future lake class.
+The top portion of this tab uses box-and-whisker plots to generally show whether the selected lake is above, below, or average compared to all the other lakes in its current and future lake class (Figure \@ref(fig:tribal1)).
 Next, the same information is shown in more detail by placing the values for safe harvest limit, harvest declaration, and proportion of safe harvest declared in chronological order to show how these metrics have been changing across time while still maintaining the comparison between the selected lake and average values for its current and future lake classes.
 This is followed by the raw data for the selected lake that is used to create the plots above should the user be interested in specific values for specific years. This data comes directly from GLIFWC and is shared with WDNR annually. 
-Finally, the last figure on this tab is designed to show how specific tribes use the fishery on the selected lake. The plot here shows what proportion of the total harvest declaration is attributed to each tribe for the lake. Often only one tribe will harvest a specific lake, but there are some lakes that are used by multiple tribes. The purpose of this plot is to get the user thinking about how changes to the ogaa and maazhi-ginoozhe fisheries for the lake, whether they are changes in co-management or environmental change, will effect some tribes more than others.
+Finally, the last figure on this tab is designed to show how specific tribes use the fishery on the selected lake. The plot here shows what proportion of the total harvest declaration is attributed to each tribe for the lake (Figure \@ref(fig:tribal2)). Often only one tribe will harvest a specific lake, but there are some lakes that are used by multiple tribes. The purpose of this plot is to get the user thinking about how changes to the ogaa and maazhi-ginoozhe fisheries for the lake, whether they are changes in co-management or environmental change, will effect some tribes more than others.
 
+```{r tribal1, fig.cap="Distribution of safe harvest and declaration data for ogaa and Maashi-ginoozhe.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/tribal1.png")
+```
+
+```{r tribal2, fig.cap="Use of the selected lake by the Ojibwe tribes in the CTWI", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/tribal2.png")
+```
 
 ##### Data Note
 The creel data will be updated annually, as only a small fraction of lakes are creeled each year, very few changes should be expected to the creel data set from one year to the next. Compared to angler creel information, the spring tribal harvest is monitored completely and a considerable amount of information will be updated from one year to the next for this sub-tab.
@@ -209,14 +256,18 @@ The creel data will be updated annually, as only a small fraction of lakes are c
 
 This tab is split into two sub-tabs, 'Standardized CPE Samples' and 'Walleye Population Estimates'. 
 Because this app is centered on walleye, the first piece of information the user will see on the 'Standardized CPE Samples' tab is the distribution of young-of-year (YOY) walleye catch rates taken during fall electrofishing surveys (measured as catch-per-mile). 
-Catch-per-mile distributions are shown for YOY, or age-0, as well as age-1 walleye. 
+Catch-per-mile distributions are shown for YOY, or age-0, as well as age-1 walleye (Figure \@ref(fig:yoyElectrofishing)). 
 By comparing the distribution of catch rates for the user-selected lake and the current and future lake class of that lake, the user can see if the chosen lake typically has a higher, lower, or about equal catch rate compared to lakes with similar characteristics.
+
+```{r yoyElectrofishing, fig.cap="Distribution and chronological presentations of YOY walleye electrofishing catch rates.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/yoyElectrofishing.png")
+```
 
 The same data are also shown through time to give the user an idea of whether or not catch rates have been trending upwards or downwards through time compared to other lakes with similar characteristics. 
 Additionally, some summary length information is also provided for the minimum, mean, and maximum length of age-0 and age-1 walleye captured during fall surveys for the user selected lake and the lake-class averages for the current and future lake classes.
 
 Aside from walleye CPE data, the user may be interested in catch rates for certain other commonly sampled species. 
-Using the species specified by the user in panel where the lake was selected, the app pulls all the relevant CPE data from standardized electrofishing surveys and fyke net surveys.
+Using the species specified by the user in panel where the lake was selected, the app pulls all the relevant CPE data from standardized electrofishing surveys and fyke net surveys (Figure \@ref(fig:cpes)).
 These data are separated by gear type.
 Similar to the YOY walleye data, the distribution of CPE values for the user-selected lake and its current and future lake class are shown for each species selected by the user. 
 Different CPE metrics are also available for the user to chose from. 
@@ -224,10 +275,20 @@ Aside from the default 'CPEmile' which is the total catch per mile, the user may
 For example, 'CPE8' may be chosen which will trigger the app to update the CPE plots to include a separate column comparing the catch rate of fish 8 inches or larger in the user-selected lake and its current and future lake class. 
 For some species there may not be data available for a given CPE-size pairing in which case the plot will will include the selected CPE measure along the x-axis but no data will be displayed above it.
 
+```{r cpes, fig.cap="Sampling of the various catch-per-effort metrics available in the app for walleye and other desired gamefish species for fyke net and electrofishing gear types", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/cpes.png")
+```
+
+
 The second sub-tab, 'Walleye Population Estimates' contains any walleye population estimates available for the selected lake. 
-First the plot through time of the raw number of fish estimated to be in the stock with the 95% confidence interval is shown for just the user-selected lake. 
-Alongside that is the population size expressed in terms of density (number per acre) so that comparisons can be made between the population density in the user-selected lake through time and the temporal trends in density for its current and future lake class. 
+First the plot through time of the raw number of fish estimated to be in the stock with the 95% confidence interval is shown for just the user-selected lake (Figure \@ref(fig:wlyPE)). 
+Alongside that is the population size expressed in terms of density (number per acre) so that comparisons can be made between the population density in the user-selected lake through time and the temporal trends in density for its current and future lake class (Figure \@ref(fig:wlyPE)). 
 Below that is a table displaying the details of any population estimate available for the user-selected lake.
+
+```{r wlyPE, fig.cap="Walleye population estimate information presented in the 'Population Metrics' tab.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/wlyPE.png")
+```
+
 
 ##### Data Note
 Nothing outside of the standard annual updates of this survey data.
@@ -236,12 +297,22 @@ Nothing outside of the standard annual updates of this survey data.
 
 This tab displays length-at-age data for any species of interest entered by the user upon start-up. Additional species can be added at any time in the same panel in the upper left-hand side of the app page. The purpose of this tab is simply to show how length at age in the selected lake compares to the lake class averages for its current and future lake classes.
 
-The first figure shows length-at-age for species selected by the user across the user-selected lake and its current and future lake class. 
+The first figure shows length-at-age for species selected by the user across the user-selected lake and its current and future lake class (Figure \@ref(fig:lengthAge1)). 
 For all three strata, the mean length is calculated for a given age and plotted as the point along with one standard deviation for the mean. 
 In some cases a standard deviation cannot be calculated when only a single observation is available for a given age or if the the standard deviation is small, the lines may not extend beyond the point boundary.
 
+```{r lengthAge1, fig.cap="Length at age information for the desired gamefish species, lengths are presented as averages (+/- 1 standard deviation) for all aged fish of a given age. In some cases no standard deviation can be calculated if only one fish of a given age has been recorded to date. In other cases standard deviations are so small that the vertical bars do not extend beyond the boundaries of the circle noting the average..", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/lengthAge1.png")
+```
+
+
 The data table shown here shows the number of fish aged and by what structure for each species of interest and sex. 
-Similarly, below this data table is the same information grouped across sexes but shown though time to get an idea of how much and how recent the aging sampling has been for the selected lake.
+Similarly, below this data table is the same information grouped across sexes but shown though time to get an idea of how much and how recent the aging sampling has been for the selected lake (Figure \@ref(fig:lengthAge2)).
+
+```{r lengthAge2, fig.cap="Chronological distribution of ageing samples taken for the selected lake.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/lengthAge2.png")
+```
+
 
 
 ##### Data Note
@@ -251,23 +322,33 @@ Feel free to contact [Colin Dassow](colin.dassow@wisconsin.gov) with any questio
 
 ### Alternative Walleye Lakes & Travel Costs
 
-This tab is split into two sub-tabs, 'Substitutable Walleye Options' and 'Travel Costs'. The first tab is designed to present the user with alternative walleye lakes within a few different driving radii. 
+This tab is split into two sub-tabs, 'Substitutable Walleye Options' and 'Travel Costs'. The first tab is designed to present the user with alternative walleye lakes within a few different driving radii (Figure \@ref(fig:substituteOptions)). 
 The idea here is that depending on whether or not the user-selected lake is maintained as a walleye fishing option, anglers may choose to divert their angling effort to one of several substitute options. 
 An understanding of the number and characteristics of the nearby walleye lakes can help the user understand whether the loss of the selected lake would result in a major lost fishing opportunity or if there are enough quality alternatives around that anglers in the area would still be able to seek out walleye fishing options.
 This information is presented for both the years 2020 and 2050.
 The individual bars on each of the plots can be clicked to produce a table describing the lakes that make up that bar. 
 The information provided in the table gives the user a brief look at the likely current state of walleye in those systems.
 
+```{r substituteOptions, fig.cap="number of lakes withing 30, 45, and 60 mi driving radii of the user selected lake. Lake class is noted on the x axis. These plots can be clicked by the user to pull up the identity of the lakes in each bar of the plot.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/substituteOptions.png")
+```
+
+
 The second tab, 'Travel Costs' is designed a little differently from the rest of the app which is centered around the user-specified lake. 
 Here, the focus is on angler populations and what fishing opportunities are available to anglers based in specific regions. 
 This sub-tab can help the user understand what alternative angling options are available to anglers coming from different cities to their region to fish. 
 In other words, instead of thinking about alternative fishing options that are close to the user-selected lake, think about what alternative fishing options are available to the anglers that come to your area.
-The user may enter any city within the U.S. though we expect the user to mainly be interested in anglers traveling from different places within Wisconsin and the bordering states. 
-In addition to specifying a starting location for an angler, the user also specifies what lake classes to consider and how many lakes of each lake class to consider. 
+The user may enter any city within the U.S. though we expect the user to mainly be interested in anglers traveling from different places within Wisconsin and the bordering states (Figure \@ref(fig:travelDist)). 
+In addition to specifying a starting location for an angler, the user also specifies what lake classes to consider and how many lakes of each lake class to consider (Figure \@ref(fig:travelDist)). 
 For example, the user may be interested in the 5 closest complex-cool-clear lakes for an angler in Wausau, WI because one of the lakes they manage is complex-cool-clear lake with an uncertain walleye future that attracts anglers mainly from central Wisconsin.
 This sub-tab would tell the user what alternative lakes are available to these anglers, how far they would have to drive and how long that drive would take the angler.
 Again, all of this is to describe what the cost might be for different angler groups to go fish somewhere else if the walleye opportunity in the user-selected lake were to go away.
-This information is presented for the years 2020 and 2050 because as lakes change over time, the cost of traveling to an equivalent walleye fishing opportunity will change as more lakes become unsuitable for walleye, something captured by the changing lake classifications, anglers may have to travel farther and farther to reach the remaining walleye fisheries around the state.
+This information is presented for the years 2020 and 2050 because as lakes change over time, the cost of traveling to an equivalent walleye fishing opportunity will change as more lakes become unsuitable for walleye, something captured by the changing lake classifications, anglers may have to travel farther and farther to reach the remaining walleye fisheries around the state (Figure \@ref(fig:travelDist)).
+
+```{r travelDist, fig.cap="The location of the fisher origin desired by the user is entered in the red box shown here. Also in the red box, the user may enter the number and type of alternative fish options they want to consider for fishers coming from the selected point of origin.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/travelDist.png")
+```
+
 
 In addition to the calculation of driving distance and time to other walleye lakes for anglers coming from user-specified cities, there are some basic tables to outline the cost in dollars for anglers traveling from different areas of the state to the user-selected lake.
 These costs take into account the cost of fuel and vehicle maintenance associated with the added mileage using the American Automobile Association's travel cost calculation guide.
@@ -285,10 +366,15 @@ An 'alternative' walleye fishing option here is defined as a system with a natur
 ### Non-native Species
 
 This tab is fairly straightforward compared to previous tabs.
-First, the user can use the AIS smart prevention tool to see what common non-native species might be able to establish themselves in Wisconsin lakes and streams to see what potential risks exist for the lake they're interested in. 
+First, the user can use the AIS smart prevention tool to see what common non-native species might be able to establish themselves in Wisconsin lakes and streams to see what potential risks exist for the lake they're interested in (Figure \@ref(fig:invasives)). 
 Immediately below this, the confirmed non-native species present in the selected lake are shown.
-In order to provide some context, the percentage of other lakes in that same lake class with each of the common non-native species is also shown for the 2020 and 2050 lake classes of the user-selected lake.
+In order to provide some context, the percentage of other lakes in that same lake class with each of the common non-native species is also shown for the 2020 and 2050 lake classes of the user-selected lake (Figure \@ref(fig:invasives)).
 Finally, a summary table comparing the total number of non-native species in the user-selected lake to the average number of non-native species for it's 2020 and 2050 lake class.
+
+```{r invasives, fig.cap="AIS SMART prevention tool is highlighted by the red box. This link to an external tool and help the user understand the vulnerability of their system to invasion of common non-native aquatic species in the state. Sumary information on the non-native species present is also provided on the page in the text and tables below the red box.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/invasives.png")
+```
+
 
 ##### Data Note
 The data used in this tab are publicly available and taken directly from WDNR.
@@ -301,12 +387,15 @@ As non-native species spread this data will need to be updated as WDNR confirms 
 
 Here some brief summary text describing the probability of natural recruitment in the user-selected lake compared to other lakes with similar characteristics is shown. 
 
-Most importantly, the goal of the this tab is to remind the user that any decision taken with respect to walleye management in the selected lake will fall into one of the 3 RAD categories described in this tab. 
+Most importantly, the goal of the this tab is to remind the user that any decision taken with respect to walleye management in the selected lake will fall into one of the 3 RAD categories described in this tab (Figure \@ref(fig:downloadButton)). 
 The goal of this  app is help the user balance the short-term management goals for specific lakes with the likely long term reality of that lake with respect to walleye fisheries. 
 The purpose of including the RAD triangle here is to remind the user to position their actions within Resist-Accept-Direct framework given the likely future of the selected lake.
 Ultimate decision-making authority may not rest with the user of the app but this app can help the user advise those with decision-making authority.
+An option exists for the app user to download a summary report for the selected lake that provides some figures and text about how the selected lake compares to other similar lakes now and in the future (Figure \@ref(fig:downloadButton)). 
+This information is largely presented as percentiles instead of raw numbers.
+The thinking here is that this is easier to digest for most potential readers who may not have a fisheries management background. The content of this report still needs improving and suggestions from app users are especially welcome here. 
+Feel free to reach out to Colin with those suggestions.
 
-
-## Example Use
-
-*eventually pick a good lake to demonstrate all aspects of the tool and include screenshots of the tool to go with text here*
+```{r downloadButton, fig.cap="Summary of the walleye recruitment and population size information, as well as the RAD context, is provided here. The red arrow points out where the button is to download a report to be shared with others.", out.height='85%',out.width='85%'}
+knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/downloadButton.png")
+```
