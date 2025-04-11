@@ -269,11 +269,8 @@ Additionally, some summary length information is also provided for the minimum, 
 Aside from walleye CPE data, the user may be interested in catch rates for certain other commonly sampled species. 
 Using the species specified by the user in panel where the lake was selected, the app pulls all the relevant CPE data from standardized electrofishing surveys and fyke net surveys (Figure \@ref(fig:cpes)).
 These data are separated by gear type.
-Similar to the YOY walleye data, the distribution of CPE values for the user-selected lake and its current and future lake class are shown for each species selected by the user. 
-Different CPE metrics are also available for the user to chose from. 
-Aside from the default 'CPEmile' which is the total catch per mile, the user may elect to see CPE for different sizes of fish. 
-For example, 'CPE8' may be chosen which will trigger the app to update the CPE plots to include a separate column comparing the catch rate of fish 8 inches or larger in the user-selected lake and its current and future lake class. 
-For some species there may not be data available for a given CPE-size pairing in which case the plot will will include the selected CPE measure along the x-axis but no data will be displayed above it.
+Similar to the YOY walleye data, the distribution of CPE values for the user-selected lake and its current and future lake class are shown for each species selected by the user for fyke netting and electrofishing gear types. 
+
 
 ```{r cpes, fig.cap="Sampling of the various catch-per-effort metrics available in the app for walleye and other desired gamefish species for fyke net and electrofishing gear types", out.height='85%',out.width='85%'}
 knitr::include_graphics("C:/Users/dassocju/OneDrive - State of Wisconsin/replacementCosts/rcApp/userGuideScreenShots/cpes.png")
@@ -383,7 +380,7 @@ As non-native species spread this data will need to be updated as WDNR confirms 
 
 ### Report Download
 
-*this tab is the lest developed, still seeking input from users on what they would like to see here* 
+*this tab is the least developed, still seeking input from users on what they would like to see here* 
 
 Here some brief summary text describing the probability of natural recruitment in the user-selected lake compared to other lakes with similar characteristics is shown. 
 
